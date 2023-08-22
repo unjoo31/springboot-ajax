@@ -25,6 +25,7 @@ public class TechController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    // 커스텀 DTO를 사용하여 카테고리와 기술 정보를 한 번에 JSON 형태로 반환
     @GetMapping("/v1/test/tech")
     public @ResponseBody TechResponse.MainDTO techV1() {
         List<Category> categoryList = categoryRepository.findAll();
@@ -34,6 +35,7 @@ public class TechController {
         return mainDTO; // messageconverter 발동 - json 변환
     }
 
+    // 단순히 기술 목록만을 JSON 형태로 반환
     @GetMapping("/v2/test/tech")
     public @ResponseBody List<Tech> techV2() {
         List<Tech> techList = techRepository.findByCategoryId(1);
